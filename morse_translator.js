@@ -41,3 +41,35 @@
                 return { ...this.MORSE_CODE_MAP };
             }
         }
+
+         /**
+         * MorseEncoder - Handles text to morse conversion
+         */
+        class MorseEncoder {
+            constructor(morseData) {
+                this.morseData = morseData;
+            }
+
+            encode(text) {
+                if (!text || typeof text !== 'string') {
+                    return '';
+                }
+
+                return text
+                    .toUpperCase()
+                    .split('')
+                    .map(char => {
+                        if (char === ' ') {
+                            return '/';  
+                        }
+                        return this.morseData.getMorseCode(char) || char;  
+                    })
+                    .join(' ')
+                    .replace(/\s+/g, ' ') 
+                    .trim();
+            }
+
+            validateInput(text) {
+                return text && typeof text === 'string' && text.trim().length > 0;
+            }
+        }
