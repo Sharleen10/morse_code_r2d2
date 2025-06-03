@@ -3,9 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>R2-D2's Morse Code Translator</title>
 </head>
-<body>
+<body data-theme="dark">
+
+    <script src="morse_translator.js"></script>
+    
+    <!-- Starfield Background -->
+    <div class="stars" id="starfield"></div>
+
+    <div class="container">
+        <div class="header">
+
+            <div class="theme-controls">
+                <button class="theme-toggle" onclick="ui.toggleTheme()">🌓 Toggle Theme</button>
+            </div>
+
+             <h1 class="title">🤖 R2-D2's Morse Translator </h1>
+            <div class="subtitle">Secret Agent Briefing: Galactic Emergency Decoder 🚨</div>
+            <div class="r2d2-ascii">
+    ___
+   /   \
+  | • • |   Beep Boop! Ready to decode Rebel messages!
+  |  >  |
+   \___/
+    |_|
+            </div>
+     </div>
+
+        <div class="main-content">
+            <!-- Text to Morse Section -->
+            <div class="translator-section">
+                <h2 class="section-title">📤 Encode Message to Morse Code</h2>
+                <div class="input-group">
+                    <label for="textInput">Enter your secret message:</label>
+                    <textarea id="textInput" placeholder="Help me Obi-Wan! You're my only hope..."></textarea>
+                </div>
+                <div class="button-group">
+                    <button onclick="translator.encodeToMorse()">🔐 Encode to Morse</button>
+                    <button class="sound-btn" onclick="sound.playMorseSound('morseOutput')">🔊 Play Morse</button>
+                    <button class="clear-btn" onclick="ui.clearText()">🗑️ Clear</button>
+                </div>
+                <div class="input-group">
+                    <label for="morseOutput">Morse Code Output:</label>
+                    <textarea id="morseOutput" readonly placeholder="Morse code will appear here..."></textarea>
+                </div>
+            </div>
+
+              <!-- Morse to Text Section -->
+            <div class="translator-section">
+                <h2 class="section-title">📥 Decode Morse Code to Text</h2>
+                <div class="input-group">
+                    <label for="morseInput">Enter morse code (dots and dashes):</label>
+                    <textarea id="morseInput" placeholder=".... . .-.. .--. / -- ."></textarea>
+                </div>
+                <div class="button-group">
+                    <button onclick="translator.decodeFromMorse()">🔓 Decode from Morse</button>
+                    <button class="sound-btn" onclick="sound.playMorseSound('morseInput')">🔊 Play Morse</button>
+                    <button class="clear-btn" onclick="ui.clearMorse()">🗑️ Clear</button>
+                </div>
+                <div class="input-group">
+                    <label for="textOutput">Decoded Message:</label>
+                    <textarea id="textOutput" readonly placeholder="Decoded text will appear here..."></textarea>
+                </div>
+            </div>
+
+
+                   <!-- Unit Testing Section -->
+            <div class="translator-section">
+                <h2 class="section-title">R2-D2's Automated Testing Lab</h2>
+                <div class="button-group">
+                    <button class="test-btn" onclick="testRunner.runAllTests()">🚀 Run All Tests</button>
+                    <button class="test-btn" onclick="testRunner.runEncodingTests()">📤 Test Encoding</button>
+                    <button class="test-btn" onclick="testRunner.runDecodingTests()">📥 Test Decoding</button>
+                </div>
+                <div id="testResults" class="test-results" style="display: none;"></div>
+            </div>
+
+              <!-- Status Messages -->
+            <div id="statusMessage"></div>
+
+            <!-- Examples Section -->
+            <div class="examples">
+                <h3 style="color: var(--text-accent); margin-bottom: 15px;">🎉 Try These Galactic Examples:</h3>
+                <div class="example-item">
+                    <strong>🔒 Love Note:</strong> "I like you" → ".. / .-.. .. -.- . / -.-- --- ..-"
+                </div>
+                <div class="example-item">
+                    <strong>💥 Spoiler Alert:</strong> "Darth Vader is Luke's father" → "-.. .- .-. - .... / ...- .- -.. . .-. / .. ... / .-.. ..- -.- . .----. ... / ..-. .- - .... . .-."
+                </div>
+                <div class="example-item">
+                    <strong>👾 Prank:</strong> "Why so many dots?" → ".-- .... -.-- / ... --- / -- .- -. -.-- / -.. --- - ... ..--.."
+                </div>
+                <div class="example-item">
+                    <strong>☕ Emergency:</strong> ".. / .- -- / .-. ..- -. -. .. -. --. / --- ..- - / --- ..-. / -.-. --- ..-. ..-. . ." → "I AM RUNNING OUT OF COFFEE"
+                </div>
+            </div>
+
+                      <!-- Morse Code Chart -->
+            <div class="morse-chart">
+                <h3 style="color: var(--text-accent); margin-bottom: 15px; text-align: center;">📊 Galactic Morse Code Chart</h3>
+                <div class="chart-grid" id="morseChart"></div>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
