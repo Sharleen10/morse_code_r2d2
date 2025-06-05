@@ -55,9 +55,11 @@ A fun, interactive Morse code translator with a Star Wars theme, featuring R2-D2
 
 ## Development Setup 💻
 
-1. Clone the repository
+1. Clone the repository: git clone https://github.com/Sharleen10/morse_code_r2d2.git
 2. Open `morse_index.html` in your browser
 3. Start translating!
+
+🔗 Live Demo:  https://sharleen10.github.io/morse_code_r2d2/
 
 ## Example Messages 📝
 
